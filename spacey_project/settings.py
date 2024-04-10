@@ -91,19 +91,22 @@ WSGI_APPLICATION = "spacey_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "spacey",
-        "USER": "spacey_user",
-        "PASSWORD": "1234567890",
-        "HOST": "localhost",
-        "PORT": "5432",
-    }
-}
+# To run this project locally -
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "spacey",
+#         "USER": "spacey_user",
+#         "PASSWORD": "1234567890",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
 
 database_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(database_url)
+DATABASES = {
+    "default": dj_database_url.parse(database_url)
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
